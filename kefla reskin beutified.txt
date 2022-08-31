@@ -1,4 +1,5 @@
 --for gohan only!
+-- thx vez for helping
 LP = game.Players.LocalPlayer
 AP = game.Players.LocalPlayer.Backpack
 GU = game.Players.LocalPlayer.PlayerGui
