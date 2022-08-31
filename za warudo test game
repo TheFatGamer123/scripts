@@ -1,0 +1,35 @@
+local Key = "Q"
+bind = "e"
+local Toggle = false
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+game:GetService("UserInputService").InputBegan:Connect(
+    function(keyobject, stuffhappening)
+        if keyobject.KeyCode == Enum.KeyCode[Key] and not stuffhappening then
+            Toggle = not Toggle
+        end
+    end
+)
+
+game:GetService("RunService").Stepped:connect(
+    function()
+        if Toggle then
+            local args = {
+                [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Throwing Knife V2"),
+                [2] = mouse.Hit.p
+            }
+
+            game:GetService("ReplicatedStorage").ThrowingKnifeRemotes.Throw:FireServer(unpack(args))
+        end
+    end
+)
+
+mouse.KeyDown:connect(
+    function(key)
+        if key == bind then
+            game:GetService("Players")["bacon_hairkid9"].PlayerGui.TimestopClockGui.Frame.BackgroundImage.Image =
+                "http://www.roblox.com/asset/?id=10747797000"
+        end
+    end
+)
