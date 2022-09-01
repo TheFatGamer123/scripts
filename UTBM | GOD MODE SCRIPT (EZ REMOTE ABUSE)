@@ -1,3 +1,4 @@
+-- do not execute simple spy after executing this, you will crash
 local BlockedRemotes = {
     "Damage",
     "InvFrame"
