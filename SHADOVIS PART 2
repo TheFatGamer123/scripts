@@ -1,0 +1,13 @@
+--NOT MINE
+--1. Equip Twin Ronin, wait 1second
+--2. Equip Travesty Scythe
+--3. Execute the two following scripts
+--4. Enjoy
+while wait(0.1) do-- don't increase time
+local A_1 = "Input"
+local A_2 = "Travesty Scythe"
+local A_3 = 12
+local A_4 = "Warp"
+local Event = game:GetService("Workspace").NAMEHERE.Combat.RemoteEvent
+Event:FireServer(A_1, A_2, A_3, A_4)
+end
