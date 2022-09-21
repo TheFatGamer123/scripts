@@ -58,6 +58,43 @@ function oilCup()
 	end)
 end
 
+function relicBday()
+	spawn (function()
+		while relicfarm == true do
+			easyTP(game:GetService("Workspace")["bday_relic"].Handle.CFrame)
+				wait()
+		end
+	end)
+end
+
+function relicStreet()
+	spawn (function()
+		while relicfarm == true do
+			easyTP(game:GetService("Workspace")["streetfighting_relic"].Handle.CFrame)
+				wait()
+		end
+	end)
+end
+
+function relicMout()
+	spawn (function()
+		while relicfarm == true do
+			easyTP(game:GetService("Workspace")["mout_relic"].Handle.CFrame)
+				wait()
+		end
+	end)
+end
+
+function relicV()
+	spawn (function()
+		while relicfarm == true do
+			easyTP(game:GetService("Workspace")["thevoices_relic"].Handle.CFrame)
+				wait()
+		end
+	end)
+end
+
+
 function bloodCup()
 	spawn (function()
 		while bloodfarm == true do
@@ -282,6 +319,20 @@ CreateToggle(tabs['Autos'], "Autofarm Sorrow Cup", "This button is toggleable!",
         while toggled == true do
             sorrowCup()
 		wait(.3)
+	end
+end)
+
+CreateToggle(tabs['Autos'], "Autofarm ALL relics", "This button is toggleable!",function() -- example toggle
+            getgenv().relicfarm = toggled
+		while toggled == true do
+		relicMout()
+		wait(.1)
+		relicStreet()
+		wait(.1)
+		relicV()
+		wait(.1)
+		relicBday()
+		safeTP()
 	end
 end)
 
