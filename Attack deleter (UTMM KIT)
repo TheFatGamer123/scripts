@@ -1,0 +1,7 @@
+game:GetService("Players").LocalPlayer.PlayerGui.Handler.Disabled=true
+game:GetService("Players").LocalPlayer.PlayerGui.ChildAdded:Connect(function(c)
+wait()
+if c.Name=="Handler" then
+c.Disabled = true
+end
+end)
