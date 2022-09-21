@@ -1,0 +1,9 @@
+local Player = game.Players.LocalPlayer
+while wait(0.1) do
+for index, value in next, workspace:GetDescendants() do
+if (value:FindFirstChildOfClass("Humanoid") and value ~= Player.Character) then
+value.Humanoid.Health = 0
+
+end
+end
+end
