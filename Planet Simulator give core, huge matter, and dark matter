@@ -1,0 +1,17 @@
+local args = {
+    [1] = {
+        ["MassRateMult"] = 1,
+        ["MassRateAdd"] = 10,
+        ["Name"] = "Moon",
+        ["Cost"] = {
+            ["PlanetCores"] = -9e19,
+            ["HeavyMatter"] = -9e19,
+            ["DarkMatter"] = -9e19
+        },
+        ["Description"] = "Gravity +10",
+        ["Model"] = game:GetService("ReplicatedStorage").Items.Moon,
+        ["RangeMult"] = 1
+    }
+}
+
+game:GetService("ReplicatedStorage").BuildItemFunction:InvokeServer(unpack(args))
