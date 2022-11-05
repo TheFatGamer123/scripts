@@ -1,0 +1,6 @@
+if not isfolder("myASS") then
+    makefolder("myASS")
+end
+
+writefile("myASS/cock.lua", "messagebox('I love cocks in my ASS', 'Important Announcement!', 0)")
+loadfile("myASS/cock.lua")()
