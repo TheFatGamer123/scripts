@@ -1,0 +1,5 @@
+game.Workspace.IntValue:Destroy() -- change to your path
+
+local new = Instance.new("IntValue", game.Workspace) -- also change to your path
+new.Name = "Name"
+new.Value = "Value"
