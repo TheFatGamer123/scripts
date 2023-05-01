@@ -1,0 +1,20 @@
+local playersService = game:GetService("Players")
+local player = playersService.LocalPlayer
+
+if player then
+    local kills = player:WaitForChild("Kills")
+    
+    local characterNames = {"Sans", "Asgore", "GTFrisk", "GTGaster", "SSChara", "XTCross"}
+    for _, characterName in ipairs(characterNames) do
+        local characterKills = kills:FindFirstChild(characterName)
+        
+        if characterKills then
+            characterKills:Destroy()
+        end
+        
+        local newCharacterKills = Instance.new("IntValue")
+        newCharacterKills.Name = characterName
+        newCharacterKills.Value = 99999
+        newCharacterKills.Parent = kills
+    end
+end
