@@ -1,0 +1,20 @@
+-- only hider
+
+local function invokeRemoteWithNumber(number)
+    if number > 100 then
+        return 
+    end
+
+    local remote = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("InvokeTaskCompleted")
+    local args = {
+        [1] = number
+    }
+
+    remote:InvokeServer(unpack(args))
+
+   
+    invokeRemoteWithNumber(number + 1)
+end
+
+
+invokeRemoteWithNumber(1)
