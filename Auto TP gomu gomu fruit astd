@@ -1,0 +1,37 @@
+local player = game.Players.LocalPlayer
+local fruitParentName = "Rubber Rubber Fruit"
+local fruit = nil
+
+local function teleportToFirstFruit()
+    if fruit and fruit:IsA("Model") then
+        local fruitMeshPart = fruit:FindFirstChildOfClass("MeshPart")
+        if fruitMeshPart then
+            local humanoidRootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+            if humanoidRootPart then
+                humanoidRootPart.CFrame = fruitMeshPart.CFrame
+            else
+                warn("HumanoidRootPart not found in player's character.")
+            end
+        else
+            warn("MeshPart not found in fruit.")
+        end
+    else
+        warn("Fruit parent object not found in workspace.")
+    end
+
+    fruit = nil
+end
+
+local function searchForFruitAndTeleport()
+    while true do
+        fruit = game.workspace:FindFirstChild(fruitParentName)
+        if fruit then
+            teleportToFirstFruit()
+            break  -- Stop the loop after teleporting once
+        else
+            wait(1)  -- Wait for a second before checking again
+        end
+    end
+end
+
+searchForFruitAndTeleport()
