@@ -14,7 +14,7 @@ pcall(function()
     objects1[1].Parent = character
     local objects2 = game:GetObjects("rbxassetid://10565107830")
     objects2[1].Parent = character.HumanoidRootPart
-    local keflaPart = game:GetService("Workspace").Live["1RWc2Qi"].HumanoidRootPart["DBS Broly  SSJL FULL POWER"]
+    local keflaPart = character:WaitForChild("HumanoidRootPart"):WaitForChild("DBS Broly  SSJL FULL POWER")
     keflaPart.Name = "KEFLA"
     keflaPart.LockedToPart = true
     local hud = LP.PlayerGui.HUD
