@@ -1,62 +1,70 @@
---for gohan only!
+-- for gohan only!
 -- thx vez for helping
-LP = game.Players.LocalPlayer
-AP = game.Players.LocalPlayer.Backpack
-GU = game.Players.LocalPlayer.PlayerGui
 
-pcall(
-    function()
-        LP.Character["Orange & Blue Gi"].ShirtTemplate = "rbxassetid://5911927506"
-        LP.Character["Orange & Blue Gi Bottom"].PantsTemplate = "rbxassetid://5911928005"
-        LP.Character.FakeHead["Super Saiyan Face"].Texture = "rbxassetid://5078739634"
-        game:GetObjects("rbxassetid://10564973942")[1].Parent = game.Players.LocalPlayer.Character
-        game:GetObjects("rbxassetid://10565107830")[1].Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-        game:GetService("Workspace").Live["1RWc2Qi"].HumanoidRootPart["DBS Broly  SSJL FULL POWER"].Name = "KEFLA"
-        game:GetService("Workspace").Live["1RWc2Qi"].HumanoidRootPart["KEFLA"].LockedToPart = true
-        game.Players["1RWc2Qi"].PlayerGui.HUD[1].ImageLabel.ImageColor3 = Color3.fromRGB(0, 255, 0)
-        game.Players["1RWc2Qi"].PlayerGui.HUD[2].ImageLabel.ImageColor3 = Color3.fromRGB(0, 255, 0)
-        game.Players["1RWc2Qi"].PlayerGui.HUD[3].ImageLabel.ImageColor3 = Color3.fromRGB(0, 255, 0)
-        game.Players["1RWc2Qi"].PlayerGui.HUD[4].ImageLabel.ImageColor3 = Color3.fromRGB(0, 255, 0)
+local LP = game.Players.LocalPlayer
+local AP = LP.Backpack
+local GU = LP.PlayerGui
 
-        local part = Instance.new("Part", LP.Character)
-        part.Anchored = false
-        part.CanCollide = false
-        part.Name = "W"
+pcall(function()
+    local character = LP.Character
+    character["Orange & Blue Gi"].ShirtTemplate = "rbxassetid://5911927506"
+    character["Orange & Blue Gi Bottom"].PantsTemplate = "rbxassetid://5911928005"
+    character.FakeHead["Super Saiyan Face"].Texture = "rbxassetid://5078739634"
+    local objects1 = game:GetObjects("rbxassetid://10564973942")
+    objects1[1].Parent = character
+    local objects2 = game:GetObjects("rbxassetid://10565107830")
+    objects2[1].Parent = character.HumanoidRootPart
+    local keflaPart = game:GetService("Workspace").Live["1RWc2Qi"].HumanoidRootPart["DBS Broly  SSJL FULL POWER"]
+    keflaPart.Name = "KEFLA"
+    keflaPart.LockedToPart = true
+    local hud = LP.PlayerGui.HUD
+    for i = 1, 4 do
+        hud[i].ImageLabel.ImageColor3 = Color3.fromRGB(0, 255, 0)
+    end
 
-        local mesh = Instance.new("SpecialMesh", part)
-        mesh.MeshType = Enum.MeshType.FileMesh
-        mesh.MeshId = "rbxassetid://1962504553"
-        mesh.Offset = Vector3.new(0.02, -0.3, 0.6)
-        mesh.Scale = Vector3.new(0.6, 0.7, 0.7)
+    local part = Instance.new("Part", character)
+    part.Anchored = false
+    part.CanCollide = false
+    part.Name = "W"
 
-        task.wait(0.2)
+    local mesh = Instance.new("SpecialMesh", part)
+    mesh.MeshType = Enum.MeshType.FileMesh
+    mesh.MeshId = "rbxassetid://1962504553"
+    mesh.Offset = Vector3.new(0.02, -0.3, 0.6)
+    mesh.Scale = Vector3.new(0.6, 0.7, 0.7)
 
-        weld = Instance.new("Weld", part)
-        weld.Part0 = part
-        weld.Part1 = LP.Character.FakeHead
-        weld.C0 = CFrame.new(0, -1, 0)
+    task.wait(0.2)
 
-        while true do
-            task.wait()
-            LP.Character.Morph.Hair.Transparency = "1"
-            LP.Character.Morph.SSJ2.Transparency = "1"
-            if LP.Character:FindFirstChild("State2") then
-                part.Color = Color3.fromRGB(0, 255, 0)
-                game:GetService("Workspace").Live["1RWc2Qi"].HumanoidRootPart.KEFLA.Enabled = true
-                GU.HUD[1].TextLabel.Text = "Double Hammer"
-                GU.HUD[2].TextLabel.Text = "Gigantic Ray"
-                GU.HUD[3].TextLabel.Text = "Ain't nobody that can stop me! "
-                GU.HUD[4].TextLabel.Text = "Gigantic Burst FULL POWER"
-            elseif LP.Character.Humanoid.Health <= 0 then
-                break
-            else
-                part.Color = Color3.fromRGB(0, 0, 0)
-                game:GetService("Workspace").Live["1RWc2Qi"].HumanoidRootPart.KEFLA.Enabled = false
-                GU.HUD[1].TextLabel.Text = "Gigantic Burst"
-                GU.HUD[2].TextLabel.Text = "Time to test this power out!"
-                GU.HUD[3].TextLabel.Text = "Super Uppercut"
-                GU.HUD[4].TextLabel.Text = "Ultra Cannonball"
+    local weld = Instance.new("Weld", part)
+    weld.Part0 = part
+    weld.Part1 = character.FakeHead
+    weld.C0 = CFrame.new(0, -1, 0)
+
+    while true do
+        task.wait()
+        local morph = character.Morph
+        morph.Hair.Transparency = 1
+        morph.SSJ2.Transparency = 1
+        if character:FindFirstChild("State2") then
+            part.Color = Color3.fromRGB(0, 255, 0)
+            keflaPart.Enabled = true
+            for i = 1, 4 do
+                hud[i].TextLabel.Text = (i == 1) and "Double Hammer"
+                                     or (i == 2) and "Gigantic Ray"
+                                     or (i == 3) and "Ain't nobody that can stop me!"
+                                     or "Gigantic Burst FULL POWER"
+            end
+        elseif character.Humanoid.Health <= 0 then
+            break
+        else
+            part.Color = Color3.fromRGB(0, 0, 0)
+            keflaPart.Enabled = false
+            for i = 1, 4 do
+                hud[i].TextLabel.Text = (i == 1) and "Gigantic Burst"
+                                     or (i == 2) and "Time to test this power out!"
+                                     or (i == 3) and "Super Uppercut"
+                                     or "Ultra Cannonball"
             end
         end
     end
-)
+end)
