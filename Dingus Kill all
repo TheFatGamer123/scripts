@@ -1,14 +1,9 @@
--- only hunter
-
+-- hunters
 local localPlayerName = game.Players.LocalPlayer.Name
+local remotes = game:GetService("ReplicatedStorage").Remotes
 
-for i, player in ipairs(game:GetService('Players'):GetPlayers()) do
+for _, player in ipairs(game.Players:GetPlayers()) do
     if player.Name ~= "Civillian" and player.Name ~= localPlayerName then
-        local args = {
-            [1] = workspace:WaitForChild(player.Name)
-        }
-
-        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("KillCharacter"):InvokeServer(unpack(args))
+        remotes.KillCharacter:InvokeServer(workspace:WaitForChild(player.Name))
     end
 end
-    
