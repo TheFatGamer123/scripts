@@ -1,0 +1,5 @@
+local ohInstance1 = game:GetService("Players").LocalPlayer.PokemonParty.PokemonName
+local ohNumber2 = 999999
+local ohString3 = "Yb58ByaIXKSIbY1qiqpmtqgiGKve5bhyLY3BA8Kp"
+
+game:GetService("ReplicatedStorage").REvents.Internal.GetExp:InvokeServer(ohInstance1, ohNumber2, ohString3)
