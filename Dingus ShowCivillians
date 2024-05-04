@@ -1,7 +1,7 @@
 local color = Color3.fromRGB(0, 0, 0)
 local sum = Color3.fromRGB(255, 255, 255)
 
-while true do task.wait()
+while true do wait()
 	for _, player in pairs(game:GetService("Workspace"):GetChildren()) do
 		if player:IsA("Model") then
 			local outline = player:FindFirstChild("PlayerOutline")
