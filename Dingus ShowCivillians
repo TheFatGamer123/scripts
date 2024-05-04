@@ -1,0 +1,15 @@
+while true do task.wait()
+	for _, player in pairs(game:GetService("Workspace"):GetChildren()) do
+		if player:IsA("Model") then
+			local outline = player:FindFirstChild("PlayerOutline")
+			local nameDisplay = player:FindFirstChild("NameDisplay")
+			if outline and nameDisplay then
+				if outline.OutlineColor == Color3.fromRGB(255, 255, 255) then
+					nameDisplay.Enabled = true
+				else
+					nameDisplay.Enabled = false
+				end
+			end
+		end
+	end
+end
