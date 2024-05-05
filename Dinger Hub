@@ -1,0 +1,128 @@
+local localPlayer = game.Players.LocalPlayer
+local localPlayerName = localPlayer.Name
+local task = game:GetService("ReplicatedStorage").Remotes.InvokeTaskCompleted
+local kill = game:GetService("ReplicatedStorage").Remotes.KillCharacter
+local color = Color3.fromRGB(0, 0, 0)
+local sum = Color3.fromRGB(255, 255, 255)
+local playerOptions = {}
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Window = Rayfield:CreateWindow({
+    Name = "Window",
+    LoadingTitle = "OnlySkidded",
+    LoadingSubtitle = "by Cowboy",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "Black Hub"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = false
+    },
+    KeySystem = false,
+    KeySettings = {
+        Title = "Untitled",
+        Subtitle = "Key System",
+        Note = "No method of obtaining the key is provided",
+        FileName = "Key",
+        SaveKey = true,
+        GrabKeyFromSite = false,
+        Key = {"keyless"}
+    }
+})
+
+local Tab = Window:CreateTab("Hiders")
+local Section = Tab:CreateSection("Window")
+local Button = Tab:CreateButton({
+    Name = "Finish all tasks",
+    Callback = function()
+        local function invokeRemoteWithNumber(number)
+            if number > 100 then return end
+            task:InvokeServer(number)
+            invokeRemoteWithNumber(number + 1)
+        end
+        invokeRemoteWithNumber(1)
+    end,
+})
+
+local Tab2 = Window:CreateTab("Hunters")
+local Section2 = Tab2:CreateSection("Window")
+local Button2 = Tab2:CreateButton({
+    Name = "Kill all",
+    Callback = function()
+        for _, player in ipairs(game.Players:GetPlayers()) do
+            if player.Name ~= "Civillian" and player.Name ~= localPlayerName then
+                kill:InvokeServer(workspace:WaitForChild(player.Name))
+            end
+        end
+    end,
+})
+
+for _, player in pairs(game:GetService("Workspace"):GetChildren()) do
+    if player:IsA("Model") then
+        local outline = player:FindFirstChild("PlayerOutline")
+        local nameDisplay = player:FindFirstChild("NameDisplay")
+        if outline and nameDisplay then
+    if player.Name ~= "Civillian" and player.Name ~= localPlayerName then
+        if outline.OutlineColor ~= color or outline.OutlineColor == sum then
+        table.insert(playerOptions, player.Name)
+        end
+    end
+end
+    end
+end
+
+
+local Dropdown = Tab2:CreateDropdown({
+    Name = "Kill Someone",
+    Options = playerOptions,
+    CurrentOption = playerOptions[1],
+    MultipleOptions = false,
+    Flag = "Dropdown1",
+    Callback = function(Option)
+        for _, player in ipairs(game.Players:GetPlayers()) do
+            if player.Name == playerOptions[1] then
+            if player.Name ~= "Civillian" and player.Name ~= localPlayerName then
+            kill:InvokeServer(workspace:WaitForChild(player.Name))
+            end
+        end
+    end
+end,
+})
+
+local Button3 = Tab2:CreateButton({
+    Name = "On (Perm)",
+    Callback = function()
+        while true do
+            wait()
+            for _, player in pairs(game:GetService("Workspace"):GetChildren()) do
+                if player:IsA("Model") then
+                    local outline = player:FindFirstChild("PlayerOutline")
+                    local nameDisplay = player:FindFirstChild("NameDisplay")
+                    if outline and nameDisplay then
+                        if outline.OutlineColor == sum or outline.OutlineColor == color then
+                            nameDisplay.Enabled = true
+                        else
+                            nameDisplay.Enabled = false
+                        end
+                    end
+                end
+            end
+        end
+    end,
+})
+
+local Tab3 = Window:CreateTab("Misc")
+local Section3 = Tab3:CreateSection("Window")
+local Button4 = Tab3:CreateButton({
+Name = "Instant Interact",
+Callback = function()
+    game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(
+        function(prompt)
+            prompt.HoldDuration = -0
+        end
+    )
+end,
+})
