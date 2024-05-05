@@ -76,7 +76,7 @@ end
 
 
 local Dropdown = Tab2:CreateDropdown({
-    Name = "Kill Someone",
+    Name = "Kill Someone (EXTREMELY BROKEN(not in the good way))",
     Options = playerOptions,
     CurrentOption = playerOptions[1],
     MultipleOptions = false,
