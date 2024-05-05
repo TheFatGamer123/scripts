@@ -65,12 +65,12 @@ for _, player in pairs(game:GetService("Workspace"):GetChildren()) do
         local outline = player:FindFirstChild("PlayerOutline")
         local nameDisplay = player:FindFirstChild("NameDisplay")
         if outline and nameDisplay then
-    if player.Name ~= "Civillian" and player.Name ~= localPlayerName then
-        if outline.OutlineColor ~= color or outline.OutlineColor == sum then
-        table.insert(playerOptions, player.Name)
+            if player.Name ~= "Civillian" and player.Name ~= localPlayerName then
+                if outline.OutlineColor ~= color or outline.OutlineColor == sum then
+                    table.insert(playerOptions, player.Name)
+                end
+            end
         end
-    end
-end
     end
 end
 
@@ -84,12 +84,12 @@ local Dropdown = Tab2:CreateDropdown({
     Callback = function(Option)
         for _, player in ipairs(game.Players:GetPlayers()) do
             if player.Name == playerOptions[1] then
-            if player.Name ~= "Civillian" and player.Name ~= localPlayerName then
-            kill:InvokeServer(workspace:WaitForChild(player.Name))
+                if player.Name ~= "Civillian" and player.Name ~= localPlayerName then
+                    kill:InvokeServer(workspace:WaitForChild(player.Name))
+                end
             end
         end
-    end
-end,
+    end,
 })
 
 local Button3 = Tab2:CreateButton({
@@ -117,12 +117,12 @@ local Button3 = Tab2:CreateButton({
 local Tab3 = Window:CreateTab("Misc")
 local Section3 = Tab3:CreateSection("Window")
 local Button4 = Tab3:CreateButton({
-Name = "Instant Interact",
-Callback = function()
-    game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(
-        function(prompt)
-            prompt.HoldDuration = -0
-        end
-    )
-end,
+    Name = "Instant Interact",
+    Callback = function()
+        game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(
+            function(prompt)
+                prompt.HoldDuration = -0
+            end
+        )
+    end,
 })
